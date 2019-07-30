@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>Drag-n-drop</title>
+</head>
+<body>
+    <style>
+        #dragbox{
+            width: 120px;
+            height: 90px;
+            padding: 20px;
+            background-color:goldenrod;
+            text-align: center;
+            position: relative;
+        }
+
+        #dragbox span{
+            font-size: 1.5em;
+            font-weight: bold;
+            color:honeydew;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #dropbox{
+            width: 400px;
+            height: 400px;
+            background-color: brown;
+            overflow: hidden;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        #counter{
+            font: 15em sans-serif;
+            font-weight: bold;
+            color:burlywood;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+
+    <div id="dropbox"><span id="counter">0</span></div>
+    <div id="dragbox"><span>Dragg me!</span></div>
+
+    <script>
+        var count = 0;
+        $("#dragbox").draggable();
+        $("#dropbox").droppable({
+            drop:function(event, ui){
+                count++;
+                $(this).find("span")
+                .html(count);
+            }
+        });
+    </script>
+</body>
+</html>
